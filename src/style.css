@@ -1,0 +1,57 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-page: #f5f5f4;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-primary: #1c1c1c;
+  --text-secondary: #71717a;
+  --text-muted: #a1a1aa;
+  --border: #e5e5e5;
+  --border-hover: #d4d4d8;
+  --btn-primary: #1c1c1c;
+  --btn-primary-hover: #3f3f46;
+  --btn-primary-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-page: #111110;
+  --bg-card: #1c1c1b;
+  --bg-input: #1c1c1b;
+  --text-primary: #e5e5e5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border: #2e2e2c;
+  --border-hover: #3f3f3c;
+  --btn-primary: #e5e5e5;
+  --btn-primary-hover: #d4d4d4;
+  --btn-primary-text: #1c1c1c;
+}
+
+body {
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+#app {
+  width: 100%;
+  max-width: 520px;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
