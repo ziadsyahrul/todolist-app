@@ -8,6 +8,7 @@
       @change="emit('toggle-todo', todo.id)"
     />
     <span @dblclick="startEdit">{{ todo.text }}</span>
+    <span class="created-date">{{ formatDate(todo.createdAt) }}</span>
     <span class="priority-badge" :class="todo.priority">
     {{ priorityLabel }}
     </span>
@@ -61,6 +62,16 @@ const priorityLabel = computed(() => {
   const map = { tinggi: '🔴 Tinggi', sedang: '🟡 Sedang', rendah: '🟢 Rendah' }
   return map[props.todo.priority] || '🟡 Sedang'
 })
+
+function formatDate(iso) {
+  if (!iso) return ''
+  return new Date(iso).toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })
+}
+
 </script>
 
 <style scoped>
@@ -94,7 +105,13 @@ span {
   color: var(--text-primary);
   cursor: pointer;
   line-height: 1.5;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
 }
+
 .completed span {
   text-decoration: line-through;
   color: var(--text-muted);
@@ -189,6 +206,14 @@ span {
   flex: none;
   white-space: nowrap;
 }
+
+.created-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  flex: none;
+  white-space: nowrap;
+}
+
 .priority-badge.tinggi { background: #fee2e2; color: #dc2626; }
 .priority-badge.sedang { background: #fef9c3; color: #ca8a04; }
 .priority-badge.rendah { background: #dcfce7; color: #16a34a; }

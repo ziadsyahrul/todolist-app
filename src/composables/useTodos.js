@@ -46,7 +46,8 @@ export function useTodos() {
       id: crypto.randomUUID(),
       text: trimmed,
       completed: false,
-      priority
+      priority,
+      createdAt: new Date().toISOString()
     })
   }
 
